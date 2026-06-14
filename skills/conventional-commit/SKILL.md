@@ -5,39 +5,32 @@ description: Analyzes git diffs and proposes a strict Conventional Commits 1.0.0
 
 # Conventional Commit Generator
 
-Your goal is to analyze uncommitted changes and propose a highly accurate commit message following the official Conventional Commits 1.0.0 specification.
+Analyze uncommitted changes and propose a commit message following Conventional Commits 1.0.0.
 
 ## 1. Analyze Changes
-Use your `bash` tool to run:
-- `git status`
-- `git diff` (or `git diff --cached` if files are already staged)
-This helps you understand exactly what was changed.
+Run `git status` and `git diff` (or `git diff --cached` if staged).
 
 ## 2. Determine Type
-Select the most appropriate type based on the diff:
-- `fix`: Patches a bug in the codebase (correlates with PATCH in SemVer).
-- `feat`: Introduces a new feature to the codebase (correlates with MINOR in SemVer).
-- `build`: Changes that affect the build system or external dependencies.
-- `chore`: Other changes that don't modify `src` or test files.
-- `ci`: Changes to CI configuration files and scripts.
-- `docs`: Documentation only changes.
-- `style`: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc).
-- `refactor`: A code change that neither fixes a bug nor adds a feature.
-- `perf`: A code change that improves performance.
-- `test`: Adding missing tests or correcting existing tests.
+Pick the best match:
+- `fix`: Bug fix (PATCH)
+- `feat`: New feature (MINOR)
+- `refactor`: Code change that fixes no bug and adds no feature
+- `perf`: Performance improvement
+- `test`: Adding/updating tests
+- `docs`: Documentation only
+- `chore`: Maintenance, non-src/test changes
+- `build`, `ci`, `style`: Build system, CI config, or whitespace/formatting
 
-## 3. Determine Scope (Optional)
-Identify the specific section of the codebase affected (e.g., `parser`, `api`, `lang`). It MUST be a noun surrounded by parentheses.
+## 3. Scope (Optional)
+Noun in parentheses: `feat(parser): add new parser`. Common scopes: `api`, `auth`, `ui`.
 
-## 4. Check for Breaking Changes (MAJOR)
-If the commit introduces a breaking API change, you MUST either:
-1. Append a `!` after the type/scope (e.g., `feat(api)!: `).
-2. AND/OR include a `BREAKING CHANGE:` footer.
+## 4. Breaking Changes
+If breaking API change:
+- Append `!` after type/scope: `feat(api)!: `
+- AND/OR include `BREAKING CHANGE:` footer
 
-## 5. Draft the Message
-Draft the commit message using this exact structure:
-
-```text
+## 5. Draft Message
+```
 <type>[optional scope]: <description>
 
 [optional body]
@@ -45,13 +38,12 @@ Draft the commit message using this exact structure:
 [optional footer(s)]
 ```
 
-**Rules for Drafting:**
-- **Description:** MUST immediately follow the colon and space. It is a short summary of the code changes.
-- **Body (Optional):** MUST begin one blank line after the description. Use this to provide contextual information about the code changes.
-- **Footer (Optional):** MUST be one blank line after the body. Used for things like `BREAKING CHANGE: <description>`, `Refs: #123`, or `Reviewed-by: Z`.
-- The units of information MUST NOT be treated as case-sensitive, except for `BREAKING CHANGE` which MUST be uppercase.
+**Rules:**
+- Header ≤ 72 chars
+- Description: imperative mood ("add" not "added"), no period
+- Conciseness: "and" → "&", use short verbs (add/fix/rm), drop filler (the/a/an/to)
+- Body: explain *what* and *why*, not *how*
+- Footer: `Refs: #123` or `Reviewed-by: Name`
 
-## 6. Present the Proposal
-Present the drafted commit message to the user inside a code block. 
-Ask the user: *"Do you approve this commit message, or would you like to make adjustments before we commit?"*
-Do NOT execute `git commit` until the user explicitly approves the message.
+## 6. Present
+Present the message in a code block.
