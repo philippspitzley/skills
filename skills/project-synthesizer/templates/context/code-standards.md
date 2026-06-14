@@ -29,6 +29,9 @@
   hardcoded hex values]
 - [Rule — e.g. Follow the border radius scale defined
   in ui-context.md]
+- Match existing component patterns in `ui-registry.md`.
+  If building a component type that already has an entry,
+  use the same classes and structure.
 
 ## API Routes
 

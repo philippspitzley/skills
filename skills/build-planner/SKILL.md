@@ -10,6 +10,7 @@ Your goal is to practice spec-driven development by breaking the user's project 
 ## Prerequisites
 1. Use your `read` tool to load `context/project-overview.md` to understand features and scope.
 2. Use your `read` tool to load `context/architecture.md` to understand the tech stack and system boundaries.
+3. Use your `read` tool to load `context/ui-registry.md` to understand any existing component patterns (if it exists — it will be empty for new projects but critical when extending existing ones).
 *(If these files do not exist, ask the user to provide their feature list and tech stack).*
 
 ## What is a Unit?

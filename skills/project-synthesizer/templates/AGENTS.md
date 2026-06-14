@@ -9,11 +9,13 @@ or making any architectural decision:
    boundaries, storage model, and invariants
 3. `context/ui-context.md` — theme, colors, typography,
    and component conventions
-4. `context/code-standards.md` — implementation rules
+4. `context/ui-registry.md` — implemented component
+   patterns and visual consistency record
+5. `context/code-standards.md` — implementation rules
    and conventions
-5. `context/ai-workflow-rules.md` — development workflow,
+6. `context/ai-workflow-rules.md` — development workflow,
    scoping rules, and delivery approach
-6. `context/progress-tracker.md` — current phase,
+7. `context/progress-tracker.md` — current phase,
    completed work, open questions, and next steps
 
 Update `context/progress-tracker.md` after each

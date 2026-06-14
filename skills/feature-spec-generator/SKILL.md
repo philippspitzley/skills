@@ -12,8 +12,9 @@ Before writing the spec, you MUST understand the project constraints and availab
 1. `context/project-overview.md`
 2. `context/architecture.md`
 3. `context/ui-context.md`
-4. `context/specs/00-build-plan.md` (to locate the specific unit)
-5. `package.json` (or equivalent build file like `Cargo.toml`, `pyproject.toml`) to inspect available scripts (e.g., test, lint, ultracite).
+4. `context/ui-registry.md` (for existing component patterns — reference these in the Design section)
+5. `context/specs/00-build-plan.md` (to locate the specific unit)
+6. `package.json` (or equivalent build file like `Cargo.toml`, `pyproject.toml`) to inspect available scripts (e.g., test, lint, ultracite).
 
 *(If the user hasn't specified which unit they want to build, ask them.)*
 
@@ -32,7 +33,7 @@ You MUST strictly follow this exact 5-section template:
 [One or two sentences describing the concrete output of this unit. Be specific. E.g., "Create sign-in and sign-up pages using Clerk components with a two-panel layout on desktop and form-only on mobile."]
 
 ## Design
-[Visual and structural decisions specific to this unit. Reference ui-context.md tokens where relevant. Describe layout behavior, component choices, and responsiveness requirements.]
+[Visual and structural decisions specific to this unit. Reference ui-context.md tokens where relevant. If building a component type that already exists in `context/ui-registry.md`, match its pattern exactly — reference it by name. If this introduces a new component type, note that it should be added to `context/ui-registry.md` after implementation. Describe layout behavior, component choices, and responsiveness requirements.]
 
 ## Implementation
 ### [Component or Sub-section Name]
@@ -55,4 +56,5 @@ You MUST strictly follow this exact 5-section template:
 - [ ] Build passes (`npm run build` or equivalent)
 - [ ] [Dynamically added check: e.g., `npm run lint` passes]
 - [ ] [Dynamically added check: e.g., `npm run test` passes]
+- [ ] New UI component types captured in `context/ui-registry.md` (if this unit introduced any)
 ```

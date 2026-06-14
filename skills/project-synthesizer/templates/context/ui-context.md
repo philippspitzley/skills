@@ -57,3 +57,10 @@ rather than writing from scratch.]
 
 [e.g. Lucide React. Stroke-based icons only. Sizes:
 h-4 w-4 for inline, h-5 w-5 for buttons.]
+
+## Component Patterns
+
+See `ui-registry.md` for the living record of every
+component built in this project. It tracks the concrete
+classes and structure used for each component type so
+every new component matches what came before.

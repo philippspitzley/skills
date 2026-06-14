@@ -29,7 +29,7 @@ You must branch from an up-to-date `main` branch and ensure the build sequence i
 ## 3. Context & Spec Loading
 Use your `read` tool to load:
 1. The requested spec file (e.g., `context/specs/[unit-number]-[feature-name].md`). This is your master instruction set for this session.
-2. The core context files (if you haven't already): `architecture.md`, `ui-context.md`, `code-standards.md`, and `ai-workflow-rules.md`.
+2. The core context files (if you haven't already): `context/architecture.md`, `context/ui-context.md`, `context/ui-registry.md`, `context/code-standards.md`, and `context/ai-workflow-rules.md`.
 
 ## 4. Update Progress Tracker
 Read `context/progress-tracker.md`. Update it to reflect the current state:
@@ -42,6 +42,7 @@ Build the feature exactly as described in the spec file.
 - **Scope Control:** Do NOT go beyond the scope of this feature. Do not "fix" unrelated things, do not refactor out-of-scope files, and do not add speculative features not explicitly requested in the spec.
 - **Dependencies:** Only install the dependencies explicitly listed in the spec file.
 - **Boundaries:** Respect the system boundaries defined in `architecture.md`.
+- **UI Consistency:** Before building any UI component, check `context/ui-registry.md` for existing patterns. Match them exactly. After building a new UI component type, run `/imprint` to capture its pattern in `context/ui-registry.md`.
 
 ## 6. Verification & Completion
 1. Go through every single item in the **"Verify when done"** checklist in the spec file.
@@ -50,4 +51,5 @@ Build the feature exactly as described in the spec file.
 4. **Wait for Confirmation:** Ask the user: *"Please review the changes. Are you ready to confirm this feature is complete?"* Do NOT move the feature to "Completed" in the progress tracker yet.
 5. **Finalize:** ONLY after the user gives explicit confirmation:
    - Update `context/progress-tracker.md` to move this feature to "Completed" and clear the "Current Goal".
+   - If any new UI component patterns were introduced, run `/imprint` to update `context/ui-registry.md`.
    - Invoke the `conventional-commit` skill to analyze your changes and propose a commit message to the user.

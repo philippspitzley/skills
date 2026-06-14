@@ -53,6 +53,17 @@ changes:
 - Storage model decisions
 - Code conventions or standards
 - Feature scope
+- UI component patterns (update `ui-registry.md`
+  after building any UI component — use `/imprint`)
+
+## UI Consistency
+
+Before building any UI component, read `ui-registry.md`
+to check for existing patterns. After building a UI
+component, run `/imprint` to capture the pattern. Every
+component of the same type must match the established
+pattern unless the developer explicitly approves a
+variation.
 
 ## Before Moving to the Next Unit
 
