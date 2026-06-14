@@ -3,31 +3,19 @@ name: ui-snapshot
 description: After building any UI component, extract the visual patterns that matter for consistency and save them to context/ui-registry.md. Use when a new UI component is built, when asked to capture component patterns, or when running an audit on existing UI.
 ---
 
-# Imprint
+# UI Snapshot
 
 Extracts visual patterns from UI components and saves them to `context/ui-registry.md` so every component built after this one matches what came before.
 
 ## How to Invoke
 
-After building any UI component, run:
-
 ```
-/ui-snapshot
-```
-
-To target a specific file:
-
-```
-/ui-snapshot [filepath]
+/ui-snapshot              # capture from recently modified components
+/ui-snapshot [filepath]   # capture from a specific file
+/ui-snapshot audit        # scan entire codebase for inconsistencies
 ```
 
-To audit an existing codebase for inconsistencies:
-
-```
-/ui-snapshot audit
-```
-
-If no filepath is given, the skill identifies recently created or modified component files automatically and captures from those.
+If no filepath is given, the skill identifies recently created or modified component files automatically.
 
 ---
 
@@ -35,62 +23,35 @@ If no filepath is given, the skill identifies recently created or modified compo
 
 ### Step 1 — Find What Was Just Built
 
-If a filepath was provided — read that file directly.
-
-If no filepath was provided — identify which component files were most recently created or modified in this session. Look in the components directory and any other locations where UI files typically live. Read those files.
-
-If it is unclear which files to capture from, ask the developer:
-
-```
-Which component should I capture patterns from?
-```
+If a filepath was provided — read that file directly. Otherwise, identify which component files were most recently created or modified in this session. If unclear, ask: `Which component should I capture patterns from?`
 
 ### Step 2 — Read the Registry
 
-Use your `read` tool to load `context/ui-registry.md`. If it does not exist, create it with a blank `## Entries` section.
-
-Check if an entry for this component type already exists. If it does, you will update it rather than duplicating.
+Load `context/ui-registry.md`. If it does not exist, create it with a blank `## Entries` section. If an entry for this component type already exists, update it rather than duplicating.
 
 ### Step 3 — Extract What Matters for Consistency
 
-Read the component code. Extract only the classes and values that affect visual consistency across the interface. Not everything — only what makes components look like they belong together.
+Read the component code. Extract only the classes and values that affect visual consistency — not everything, only what makes components look like they belong together.
 
-**Extract these:**
+**Extract:**
 
-- Background — what bg- class is used for the container, cards, panels
-- Border — border color, border width, border style
-- Border radius — rounded- class used for this component type
-- Text colors — primary text, secondary text, muted text classes
-- Text sizes and weights — for headings, body, labels, captions
-- Spacing — padding inside the component, gap between elements
-- Interactive states — hover, focus, active classes
+- Background — bg- class for containers, cards, panels
+- Border — color, width, style
+- Border radius — rounded- class
+- Text colors — primary, secondary, muted
+- Text sizes and weights — headings, body, labels, captions
+- Spacing — padding, gap
+- Interactive states — hover, focus, active
 - Shadow — if used
-- Any accent or brand color usage
+- Accent or brand color usage
 
-**Do not extract these:**
+**Skip** (too context-dependent): width/height, flex/grid layout, positioning, animation timing, responsive variants.
 
-- Width and height — too context-dependent to be a consistency rule
-- Flex and grid layout — structural, not visual
-- Positioning — absolute, relative, z-index — context-dependent
-- Animation and transition timing — unless it is a pattern worth enforcing
-- Responsive breakpoint variants — capture the base pattern only
-
-**Also capture structure:**
-
-- How the component is composed (wrapper elements, nesting)
-- Title/body/layout pattern
-- Icon placement relative to text
-- Slot or children pattern
+**Also capture structure:** wrapper elements, nesting, title/body/layout pattern, icon placement, slot/children pattern.
 
 ### Step 4 — Write to ui-registry.md
 
-Open `context/ui-registry.md`. If it does not exist, create it.
-
-Add a new entry for the component that was captured. Do not overwrite existing entries — append to the registry.
-
-If an entry for this component type already exists — update it rather than duplicating.
-
-### Entry format
+Append a new entry (or update existing). Use this format:
 
 ```markdown
 ### [Component Name]
@@ -99,8 +60,7 @@ File: [filepath]
 Last updated: [date]
 
 **Structure:**
-[How the component is composed — wrapper elements,
-nesting, title/body/layout pattern]
+[Wrapper elements, nesting, title/body/layout pattern]
 
 | Property         | Class           |
 | ---------------- | --------------- |
@@ -115,110 +75,43 @@ nesting, title/body/layout pattern]
 | Accent usage     | [class or none] |
 
 **Pattern notes:**
-[Any important pattern decisions worth noting —
-why a specific class was chosen, what this component
+[Why a specific class was chosen, what this component
 should always match, what variations are allowed]
 ```
 
-### Step 5 — Confirm What Was Captured
+### Step 5 — Confirm
 
-After writing to ui-registry.md, confirm to the developer:
+After writing, confirm to the developer:
 
 ```
-Imprinted [Component Name] → ui-registry.md
-
-Captured:
-- Background: [class]
-- Border: [class]
-- Radius: [class]
-- Text: [classes]
-- Spacing: [classes]
-- Hover: [class]
-
+Saved [Component Name] → ui-registry.md
+Captured: [list key classes]
 Any future component of this type should match these patterns.
 ```
 
-If anything looked inconsistent or surprising during extraction — flag it:
-
-```
-Note: [Something that looked inconsistent or worth the
-developer knowing about]
-```
+If anything looked inconsistent or surprising — flag it with a note.
 
 ---
 
 ## Audit Mode — `/ui-snapshot audit`
 
-Run this when the UI already exists and consistency is uncertain. Instead of capturing from one component, it scans the entire codebase, finds conflicts, and establishes a clean baseline before any further capturing happens.
+Use when the UI already exists and consistency is uncertain. Scans the entire codebase, finds conflicts, and establishes a clean baseline.
 
-### Step 1 — Scan all UI components
+### Step 1 — Scan All UI Components
 
-Find every component file in the project. Read each one. Build a complete picture of what visual patterns are currently in use across the entire interface.
+Find every component file in the project. Read each one. Build a complete picture of what visual patterns are currently in use.
 
-### Step 2 — Identify conflicts
+### Step 2 — Identify Conflicts
 
-For each visual property that matters for consistency, list every variation found:
+For each visual property that matters for consistency, list every variation found with a recommendation to standardise. Flag any hardcoded hex values or non-token classes.
 
-```
-## UI Consistency Audit
+### Step 3 — Wait for Developer Confirmation
 
-### Conflicts found
+Present the audit report. Do not fix anything or update ui-registry.md yet. Ask the developer to confirm the recommendations before proceeding.
 
-**Border radius**
-[List every rounded- variant found and which components use it]
-Recommendation: [which one to standardise on and why]
+### Step 4 — Write the Confirmed Baseline
 
-**Background colors**
-[List every bg- class found — flag any hardcoded hex values]
-Recommendation: [which token classes should replace them]
-
-**Text colors**
-[List every text- color class found — flag any that bypass the design system]
-Recommendation: [which token classes should replace them]
-
-**Spacing**
-[List padding and gap variations found]
-Recommendation: [which values to standardise on]
-
-**Border colors**
-[List every border color class found]
-Recommendation: [which token class to standardise on]
-
-**Interactive states**
-[List hover, focus, active variations found]
-Recommendation: [which pattern to standardise on]
-
-### Hardcoded values found
-[List every hardcoded hex value, raw color class, or
-non-token value found — with the file and line where it appears]
-These must be replaced with design system tokens.
-
-### Recommended baseline
-[The correct pattern for each property —
-based on what the majority already uses correctly
-and what the design system defines]
-```
-
-### Step 3 — Wait for developer confirmation
-
-Present the audit report. Do not fix anything. Do not update ui-registry.md yet.
-
-Ask the developer:
-
-```
-Audit complete. [X] conflicts found across [Y] properties.
-
-Before I establish the baseline in ui-registry.md:
-1. Do the recommendations above look correct?
-2. Are there any conflicts you want to resolve differently?
-3. Should I flag the hardcoded values as issues to fix?
-
-Confirm the baseline and I will write it to ui-registry.md.
-```
-
-### Step 4 — Write the confirmed baseline
-
-After the developer confirms — write the agreed baseline to `context/ui-registry.md` as the foundation. Label it clearly:
+After confirmation, write the agreed baseline to `context/ui-registry.md`:
 
 ```markdown
 ## Baseline — Established [date]
@@ -239,18 +132,6 @@ After the developer confirms — write the agreed baseline to `context/ui-regist
 | Input border     | [class]       |
 ```
 
-### Step 5 — List what needs fixing
+### Step 5 — List What Needs Fixing
 
-After writing the baseline, produce a fix list — every component that deviates from it:
-
-```
-## Components to fix
-
-These components deviate from the confirmed baseline
-and should be updated:
-
-- [Component file] — [what is wrong] → [what it should be]
-- [Component file] — [what is wrong] → [what it should be]
-```
-
-The developer can now fix these systematically — or fix them as they encounter each component. Either way, the baseline is established and `/ui-snapshot` can be used going forward to keep new components consistent.
+Produce a fix list — every component that deviates from the baseline, with what's wrong and what it should be. The developer can now fix these systematically, or as they encounter each component. Going forward, `/ui-snapshot` keeps new components consistent.
