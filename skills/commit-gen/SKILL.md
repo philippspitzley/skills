@@ -10,7 +10,16 @@ Analyze uncommitted changes and propose a commit message following Conventional 
 ## 1. Analyze Changes
 Run `git status` and `git diff` (or `git diff --cached` if staged).
 
-## 2. Determine Type
+## 2. Style Analysis
+Run `git log --oneline -20`. Extract:
+- Verb preferences (add/create, fix/resolve, rm/remove)
+- Scope naming (short/long, separator style)
+- Capitalization convention
+- Abbreviation patterns
+
+Apply these patterns for project consistency.
+
+## 3. Determine Type
 Pick the best match:
 - `fix`: Bug fix (PATCH)
 - `feat`: New feature (MINOR)
@@ -21,15 +30,15 @@ Pick the best match:
 - `chore`: Maintenance, non-src/test changes
 - `build`, `ci`, `style`: Build system, CI config, or whitespace/formatting
 
-## 3. Scope (Optional)
+## 4. Scope (Optional)
 Noun in parentheses: `feat(parser): add new parser`. Common scopes: `api`, `auth`, `ui`.
 
-## 4. Breaking Changes
+## 5. Breaking Changes
 If breaking API change:
 - Append `!` after type/scope: `feat(api)!: `
 - AND/OR include `BREAKING CHANGE:` footer
 
-## 5. Draft Message
+## 6. Draft Message
 ```
 <type>[optional scope]: <description>
 
@@ -45,5 +54,5 @@ If breaking API change:
 - Body: explain *what* and *why*, not *how*
 - Footer: `Refs: #123` or `Reviewed-by: Name`
 
-## 6. Present
+## 7. Present
 Present the message in a code block.
