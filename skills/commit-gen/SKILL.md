@@ -51,7 +51,7 @@ If breaking API change:
 - Header ≤ 72 chars
 - Description: imperative mood ("add" not "added"), no period
 - Conciseness: "and" → "&", use short verbs (add/fix/rm), drop filler (the/a/an/to)
-- Body: explain *what* and *why*, not *how*
+- Body: concise bullet points (prefixed with `-`) of *what* changed and *why*
 - Footer: `Refs: #123` or `Reviewed-by: Name`
 
 ## 7. Present
