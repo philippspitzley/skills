@@ -1,5 +1,5 @@
 ---
-name: conventional-commit
+name: commit-gen
 description: Analyzes git diffs and proposes a strict Conventional Commits 1.0.0 message. Use this to generate commit messages before committing code.
 ---
 

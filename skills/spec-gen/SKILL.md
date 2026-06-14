@@ -1,5 +1,5 @@
 ---
-name: feature-spec-generator
+name: spec-gen
 description: Generates a detailed 6-section feature implementation spec file for a specific build unit. Use before implementing a new feature to ensure spec-driven development.
 ---
 

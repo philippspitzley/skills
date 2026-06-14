@@ -1,5 +1,5 @@
 ---
-name: implement-feature
+name: spec-impl
 description: Implements a specific feature unit based on its spec file. Manages git branching from main, ensures sequential unit execution, updates the progress tracker, and adheres to scope.
 ---
 
@@ -34,7 +34,7 @@ Build exactly as spec describes:
 - **Scope:** No extra features, fixes, or refactors beyond spec
 - **Dependencies:** Only spec-listed deps
 - **Boundaries:** Respect `architecture.md` boundaries
-- **UI:** Check `ui-registry.md` for patterns first; run `/imprint` after new component types
+- **UI:** Check `ui-registry.md` for patterns first; run `/ui-snapshot` after new component types
 
 ## 6. Verify
 1. Complete every item in spec's "Verify when done" checklist
@@ -44,7 +44,7 @@ Build exactly as spec describes:
 ## 7. Independent Review
 Launch review subagent via `task` tool with prompt:
 ```
-Load `review` skill. Review implementation:
+Load `code-review` skill. Review implementation:
 - Spec: context/specs/[unit-number]-[feature-name].md
 - Changed: git diff main...HEAD --name-only
 - Context: architecture.md, code-standards.md, ui-registry.md
@@ -56,5 +56,5 @@ Present report to developer.
 Wait for explicit user confirmation: *"Happy with implementation? Should I commit?"*
 Only after confirmation:
 1. Move feature to "Completed" in `progress-tracker.md`
-2. Run `/imprint` if new UI patterns introduced
-3. Use `conventional-commit` skill to propose commit message
+2. Run `/ui-snapshot` if new UI patterns introduced
+3. Use `commit-gen` skill to propose commit message

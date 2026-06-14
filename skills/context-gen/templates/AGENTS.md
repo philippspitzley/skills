@@ -32,8 +32,8 @@ when the spec file for a unit references them.
 
 ### Workflow
 
-- `conventional-commit` — generate commit messages
-- `imprint` — capture UI component patterns to
+- `commit-gen` — generate commit messages
+- `ui-snapshot` — capture UI component patterns to
   `ui-registry.md`
 
 ### Stack-specific

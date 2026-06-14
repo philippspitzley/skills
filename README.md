@@ -5,10 +5,10 @@ A collection of agent skills for **spec-driven AI software development** — com
 
 | Skill | Phase | What it does |
 |---|---|---|
-| **project-architect** | Design | Relentlessly interviews you to pressure-test a new project idea before code is written. Identifies the tech stack and relevant agent skills. |
-| **project-synthesizer** | Spec | Synthesizes the architectural conversation into the Seven-File Context System (`project-overview.md`, `architecture.md`, `ui-context.md`, `ui-registry.md`, `code-standards.md`, `ai-workflow-rules.md`, `progress-tracker.md` + `AGENTS.md` with available skills). |
-| **build-planner** | Plan | Breaks the project into sequenced, scoped build units and writes the roadmap to `context/specs/00-build-plan.md`. |
-| **feature-spec-generator** | Spec | Generates a detailed 6-section implementation spec (Goal, Design, Implementation, Dependencies, Skills, Verify) for a single unit. |
-| **implement-feature** | Build | Executes spec-driven development: branches from main, implements exactly what the spec says, loads relevant skills, runs verification checks, and updates the progress tracker. |
-| **conventional-commit** | Wrap | Analyzes the diff and proposes a Conventional Commits message. |
-| **imprint** | Maintain | Captures UI component patterns to `ui-registry.md` for visual consistency across sessions. Supports audit mode for existing codebases. |
+| **architect** | Design | Relentlessly interviews you to pressure-test a new project idea before code is written. Identifies the tech stack and relevant agent skills. |
+| **context-gen** | Spec | Synthesizes the architectural conversation into the Seven-File Context System (`project-overview.md`, `architecture.md`, `ui-context.md`, `ui-registry.md`, `code-standards.md`, `ai-workflow-rules.md`, `progress-tracker.md` + `AGENTS.md` with available skills). |
+| **build-plan** | Plan | Breaks the project into sequenced, scoped build units and writes the roadmap to `context/specs/00-build-plan.md`. |
+| **spec-gen** | Spec | Generates a detailed 6-section implementation spec (Goal, Design, Implementation, Dependencies, Skills, Verify) for a single unit. |
+| **spec-impl** | Build | Executes spec-driven development: branches from main, implements exactly what the spec says, loads relevant skills, runs verification checks, and updates the progress tracker. |
+| **commit-gen** | Wrap | Analyzes the diff and proposes a Conventional Commits message. |
+| **ui-snapshot** | Maintain | Captures UI component patterns to `ui-registry.md` for visual consistency across sessions. Supports audit mode for existing codebases. |

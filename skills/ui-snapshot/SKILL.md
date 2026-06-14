@@ -1,5 +1,5 @@
 ---
-name: imprint
+name: ui-snapshot
 description: After building any UI component, extract the visual patterns that matter for consistency and save them to context/ui-registry.md. Use when a new UI component is built, when asked to capture component patterns, or when running an audit on existing UI.
 ---
 
@@ -12,26 +12,26 @@ Extracts visual patterns from UI components and saves them to `context/ui-regist
 After building any UI component, run:
 
 ```
-/imprint
+/ui-snapshot
 ```
 
 To target a specific file:
 
 ```
-/imprint [filepath]
+/ui-snapshot [filepath]
 ```
 
 To audit an existing codebase for inconsistencies:
 
 ```
-/imprint audit
+/ui-snapshot audit
 ```
 
 If no filepath is given, the skill identifies recently created or modified component files automatically and captures from those.
 
 ---
 
-## Standard Mode — `/imprint`
+## Standard Mode — `/ui-snapshot`
 
 ### Step 1 — Find What Was Just Built
 
@@ -147,7 +147,7 @@ developer knowing about]
 
 ---
 
-## Audit Mode — `/imprint audit`
+## Audit Mode — `/ui-snapshot audit`
 
 Run this when the UI already exists and consistency is uncertain. Instead of capturing from one component, it scans the entire codebase, finds conflicts, and establishes a clean baseline before any further capturing happens.
 
@@ -223,7 +223,7 @@ After the developer confirms — write the agreed baseline to `context/ui-regist
 ```markdown
 ## Baseline — Established [date]
 
-[Note: This baseline was established via /imprint audit]
+[Note: This baseline was established via /ui-snapshot audit]
 
 | Property         | Correct class |
 | ---------------- | ------------- |
@@ -253,4 +253,4 @@ and should be updated:
 - [Component file] — [what is wrong] → [what it should be]
 ```
 
-The developer can now fix these systematically — or fix them as they encounter each component. Either way, the baseline is established and `/imprint` can be used going forward to keep new components consistent.
+The developer can now fix these systematically — or fix them as they encounter each component. Either way, the baseline is established and `/ui-snapshot` can be used going forward to keep new components consistent.

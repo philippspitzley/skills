@@ -1,5 +1,5 @@
 ---
-name: project-synthesizer
+name: context-gen
 description: Synthesizes a planning conversation into the Seven-File Context System plus AGENTS.md index. Use when a project architecture conversation concludes and the user wants to generate the final context documentation.
 ---
 

@@ -11,7 +11,7 @@ developer explicitly approves a new pattern.
   the relevant entry
 - If a component type already exists, match its
   pattern exactly
-- Run `/imprint` after building UI components to
+- Run `/ui-snapshot` after building UI components to
   capture patterns automatically
 
 ## Entries

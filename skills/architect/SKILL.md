@@ -1,5 +1,5 @@
 ---
-name: project-architect
+name: architect
 description: Relentlessly interview the user to plan a new project from scratch. Use when starting a greenfield project, defining architecture, or when the user says "plan a new project", "architect this idea", or "let's think through this new app".
 ---
 

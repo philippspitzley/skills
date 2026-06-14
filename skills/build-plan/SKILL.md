@@ -1,5 +1,5 @@
 ---
-name: build-planner
+name: build-plan
 description: Breaks down a project into a sequenced, high-level build plan for spec-driven development. Generates a structured overview in context/specs/00-build-plan.md.
 ---
 
