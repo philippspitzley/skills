@@ -45,12 +45,30 @@ Build the feature exactly as described in the spec file.
 - **Boundaries:** Respect the system boundaries defined in `architecture.md`.
 - **UI Consistency:** Before building any UI component, check `context/ui-registry.md` for existing patterns. Match them exactly. After building a new UI component type, run `/imprint` to capture its pattern in `context/ui-registry.md`.
 
-## 6. Verification & Completion
+## 6. Verification
 1. Go through every single item in the **"Verify when done"** checklist in the spec file.
 2. Run any automated checks (lint, test, build) as required.
-3. Present the finished work and the completed checklist to the user for review.
-4. **Wait for Confirmation:** Ask the user: *"Please review the changes. Are you ready to confirm this feature is complete?"* Do NOT move the feature to "Completed" in the progress tracker yet.
-5. **Finalize:** ONLY after the user gives explicit confirmation:
+3. Present the finished work and the completed checklist to the user.
+
+## 7. Independent Review
+Launch an independent review subagent to verify the implementation.
+1. Use the `task` tool to launch a subagent with this prompt:
+
+```
+Load the `review` skill. Then review the current feature implementation:
+1. Spec file: context/specs/[unit-number]-[feature-name].md
+2. Changed files: run `git diff main...HEAD --name-only`
+3. Context files: context/architecture.md, context/code-standards.md, context/ui-registry.md
+Return the full review report.
+```
+
+2. The subagent has no memory of the implementation — only the code, the spec, and the project rules. This ensures independence.
+3. Present the review report to the developer.
+
+## 8. Finalize
+1. **Wait for the developer to decide:** The developer may fix issues from the review or accept the implementation as-is.
+2. **Wait for explicit confirmation:** Ask the user: *"Are you happy with the implementation? Should I proceed to commit?"* Do NOT proceed until the user explicitly confirms.
+3. **Finalize:** ONLY after the user gives explicit confirmation:
    - Update `context/progress-tracker.md` to move this feature to "Completed" and clear the "Current Goal".
    - If any new UI component patterns were introduced, run `/imprint` to update `context/ui-registry.md`.
    - Invoke the `conventional-commit` skill to analyze your changes and propose a commit message to the user.
