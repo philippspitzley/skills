@@ -8,21 +8,17 @@ description: Breaks down a project into a sequenced, high-level build plan for s
 Your goal is to practice spec-driven development by breaking the user's project into specific, scoped units before any code is written. This skill generates the high-level roadmap, NOT the detailed implementation specs.
 
 ## Prerequisites
-1. Use your `read` tool to load `context/project-overview.md` to understand features and scope.
-2. Use your `read` tool to load `context/architecture.md` to understand the tech stack and system boundaries.
-3. Use your `read` tool to load `context/ui-registry.md` to understand any existing component patterns (if it exists — it will be empty for new projects but critical when extending existing ones).
-*(If these files do not exist, ask the user to provide their feature list and tech stack).*
+1. Load `context/project-overview.md` (features & scope)
+2. Load `context/architecture.md` (tech stack & boundaries)
+3. Load `context/ui-registry.md` (component patterns — exists for extensions, empty for new projects)
+*If files don't exist, ask user for features and stack.*
 
 ## What is a Unit?
-A unit is a single, scoped piece of work small enough to build in one focused session. 
-**Bad Unit:** "Build the dashboard" (This is a phase, not a unit).
-**Good Unit:** "Project sidebar with My Projects and Shared tabs, empty placeholder states, and open/close behavior. No API calls."
+A unit is one visible, scoped deliverable built in a single session—NOT a phase.
+- ✅ "Project sidebar with My Projects/Shared tabs, placeholder states, open/close. No API calls."
+- ❌ "Build the dashboard" (too broad)
 
-**Strict Rules for Units:**
-- It produces ONE visible result.
-- It stays within ONE system boundary (e.g., do not mix UI changes with database schema changes).
-- Units that always get done together in the same session must be merged.
-- Units with no standalone visible result must be merged with adjacent units.
+**Rules:** One visible result. One system boundary. Always-together work merges. No standalone-result work merges with adjacent units.
 
 ## Rules for Ordering Units
 The sequence of units is critical. You must strictly adhere to this order of operations:
@@ -34,12 +30,10 @@ The sequence of units is critical. You must strictly adhere to this order of ope
 
 ## Workflow
 
-1. **Analyze & Propose:** Based on the features and stack, draft a numbered list of units. 
-2. **Self-Validate:** Before showing the user, verify your draft:
-   - Does everything this unit depends on already exist in a previous unit? (If no, reorder).
-   - Are any two adjacent units always done in the same session? (If yes, merge them).
-3. **Review & Refine:** Present the validated draft to the user. Ask them to review it carefully to see if the sequence makes sense or needs adjustment.
-4. **Generate:** Once the user explicitly approves the sequence, create the directory `context/specs/` and write the final plan to `context/specs/00-build-plan.md`.
+1. **Draft:** Propose numbered units based on features/stack.
+2. **Validate:** Ensure all dependencies exist and adjacent units are merged per rules above.
+3. **Review:** Present draft to user for sequence confirmation.
+4. **Generate:** On approval, write to `context/specs/00-build-plan.md`.
 
 ## Output Format (`context/specs/00-build-plan.md`)
 Format the approved build plan as a concise Markdown document. This file acts as an overview. For each unit, include only:
