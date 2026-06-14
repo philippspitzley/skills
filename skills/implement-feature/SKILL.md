@@ -30,6 +30,7 @@ You must branch from an up-to-date `main` branch and ensure the build sequence i
 Use your `read` tool to load:
 1. The requested spec file (e.g., `context/specs/[unit-number]-[feature-name].md`). This is your master instruction set for this session.
 2. The core context files (if you haven't already): `context/architecture.md`, `context/ui-context.md`, `context/ui-registry.md`, `context/code-standards.md`, and `context/ai-workflow-rules.md`.
+3. If the spec file contains a `## Skills` section, load those skills using the `skill` tool before implementation begins.
 
 ## 4. Update Progress Tracker
 Read `context/progress-tracker.md`. Update it to reflect the current state:

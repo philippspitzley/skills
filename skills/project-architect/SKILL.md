@@ -32,6 +32,9 @@ Drive the conversation until you and the user can answer every question clearly 
 - What are the system boundaries (which folder/module owns what responsibility)?
 - What are the rules the architecture must never violate?
 - What are the most complex parts technically?
+- Which agent skills are relevant to this stack?
+  (e.g. tailwind, react, tanstack-query, gsap, three,
+  animejs — list any that apply to the technology choices)
 
 ### Design
 - What is the visual language (colors, typography, spacing)?

@@ -1,6 +1,6 @@
 ---
 name: feature-spec-generator
-description: Generates a highly detailed, 5-section feature implementation spec file for a specific build unit. Use this right before implementing a new feature to ensure spec-driven development.
+description: Generates a highly detailed, 6-section feature implementation spec file for a specific build unit. Use this right before implementing a new feature to ensure spec-driven development.
 ---
 
 # Feature Spec Generator
@@ -15,6 +15,7 @@ Before writing the spec, you MUST understand the project constraints and availab
 4. `context/ui-registry.md` (for existing component patterns — reference these in the Design section)
 5. `context/specs/00-build-plan.md` (to locate the specific unit)
 6. `package.json` (or equivalent build file like `Cargo.toml`, `pyproject.toml`) to inspect available scripts (e.g., test, lint, ultracite).
+7. `AGENTS.md` (for the list of available skills — select relevant ones for this unit)
 
 *(If the user hasn't specified which unit they want to build, ask them.)*
 
@@ -24,7 +25,7 @@ Do NOT guess implementation details. If the specific behavior, UI layout, or tec
 ## Generation Rules
 When the feature is fully understood, generate the spec file and save it to `context/specs/[unit-number]-[feature-name-kebab-case].md` (e.g., `context/specs/01-auth-pages.md`).
 
-You MUST strictly follow this exact 5-section template:
+You MUST strictly follow this exact 6-section template:
 
 ```markdown
 # Unit NN: [Feature Name]
@@ -45,6 +46,10 @@ You MUST strictly follow this exact 5-section template:
 ## Dependencies
 [Any packages this unit needs that aren't already installed. List them explicitly with reasons. If none, write "None".]
 - package-name (reason)
+
+## Skills
+[Which available skills from `AGENTS.md` are relevant for this unit. List each with a brief reason why it is needed here. If none, write "None".]
+- skill-name (reason)
 
 ## Verify when done
 [A list of specific conditions that must be true before this unit is complete. Always include the standard checks below, plus feature-specific ones. **If you found relevant scripts in `package.json` (e.g., test, lint, ultracite), add them here.**]

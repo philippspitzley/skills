@@ -24,3 +24,23 @@ meaningful implementation change.
 If implementation changes the architecture, scope, or
 standards documented in the context files, update the
 relevant file before continuing.
+
+## Available Skills
+
+Use these skills during implementation. Invoke them
+when the spec file for a unit references them.
+
+### Workflow
+
+- `conventional-commit` — generate commit messages
+- `imprint` — capture UI component patterns to
+  `ui-registry.md`
+
+### Stack-specific
+
+[Populate based on the tech stack identified by the
+architect. List each skill with a one-line purpose.]
+
+- [e.g. `tailwind` — Tailwind CSS patterns and utilities]
+- [e.g. `react` — React component patterns]
+- [e.g. `tanstack-query` — data fetching and caching]
