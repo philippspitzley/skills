@@ -11,7 +11,7 @@ Execute spec-driven development: build exactly what the spec describes—no more
 If user didn't provide spec file, ask: *"Which feature spec file would you like me to implement?"* Wait for answer before proceeding.
 
 ## 1. Git Pre-flight
-Run `git status --porcelain`. If uncommitted files exist, stop: *"Please commit or stash changes first."*
+Run `git status --porcelain`. If uncommitted files exist (excluding `context/specs/*.md` and `progress-tracker.md`), stop: *"Please commit or stash changes first."*
 
 ## 2. Branch & Sequence
 1. `git switch main && git pull`
