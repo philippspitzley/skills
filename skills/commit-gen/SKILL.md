@@ -21,14 +21,14 @@ Apply these patterns for project consistency.
 
 ## 3. Determine Type
 Pick the best match:
-- `fix`: Bug fix (PATCH)
-- `feat`: New feature (MINOR)
-- `refactor`: Code change that fixes no bug and adds no feature
-- `perf`: Performance improvement
-- `test`: Adding/updating tests
-- `docs`: Documentation only
-- `chore`: Maintenance, non-src/test changes
-- `build`, `ci`, `style`: Build system, CI config, or whitespace/formatting
+- `fix`: Bug fix (PATCH) — signals defect resolution
+- `feat`: New feature (MINOR) — signals user-facing capability
+- `refactor`: Code restructure — no bug or feature, just clarity/maintainability
+- `perf`: Performance improvement — speed or resource gains
+- `test`: Test additions or corrections — coverage or assertion fixes
+- `docs`: Documentation only — no code changes
+- `chore`: Maintenance — deps, config, non-src/test changes
+- `build`, `ci`, `style`: Build system, CI config, or formatting
 
 ## 4. Scope (Optional)
 Noun in parentheses: `feat(parser): add new parser`. Common scopes: `api`, `auth`, `ui`.
@@ -48,11 +48,11 @@ If breaking API change:
 ```
 
 **Rules:**
-- Header ≤ 72 chars
-- Description: imperative mood ("add" not "added"), no period
-- Conciseness: "and" → "&", use short verbs (add/fix/rm), drop filler (the/a/an/to)
-- Body: concise bullet points (prefixed with `-`) of *what* changed and *why*
-- Footer: `Refs: #123` or `Reviewed-by: Name`
+- Header ≤ 72 chars — fits git log, email subjects, PR titles
+- Description: imperative mood ("add" not "added"), no period — git generates revert messages from this
+- Conciseness: "and" → "&", short verbs (add/fix/rm), drop filler (the/a/an/to) — scanability in terminal
+- Body: concise `-` bullets of *what* changed and *why* — reviewers need rationale, not just diffs
+- Footer: `Refs: #123` or `Reviewed-by: Name` — traceability to issues and reviewers
 
 ## 7. Present
 Present the message in a code block.
